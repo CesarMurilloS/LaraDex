@@ -27,16 +27,11 @@
 export default {
     data(){
         return {
-            works: [
-                {id: 1, name: "Laravel layout designs"},
-                {id: 2, name: "Controllers development"},
-                {id: 3, name: "Material Theme addition"}
-
-            ]
+            works: []
         }
     },
     mounted(){
-        console.log('Component mounted')
+        axios.get('http://127.0.0.1:8000/works').then(response => (this.works = response.data));
     }
 }
 </script>

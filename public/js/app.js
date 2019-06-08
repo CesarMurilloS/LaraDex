@@ -1899,20 +1899,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      works: [{
-        id: 1,
-        name: "Laravel layout designs"
-      }, {
-        id: 2,
-        name: "Controllers development"
-      }, {
-        id: 3,
-        name: "Material Theme addition"
-      }]
+      works: []
     };
   },
   mounted: function mounted() {
-    console.log('Component mounted');
+    var _this = this;
+
+    axios.get('http://127.0.0.1:8000/works').then(function (response) {
+      return _this.works = response.data;
+    });
   }
 });
 
