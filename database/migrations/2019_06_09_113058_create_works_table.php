@@ -15,6 +15,8 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->text('picture');
             $table->timestamps();
         });
     }
