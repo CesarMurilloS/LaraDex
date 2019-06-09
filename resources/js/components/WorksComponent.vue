@@ -1,8 +1,8 @@
 <template>
     <div class="row">
 
-
-        <div class="col-12 col-sm-6 col-md-4 my-2" v-for="work in works">
+        <spinner v-show="loading"></spinner>
+        <div class="col-12 col-sm-6 col-md-4 my-2" v-for="work in works" v-bind:key="work.id">
 
             <div class="card">
                 <img class="card-img-top" src="/images/Image" style="height:100px;width:auto;" alt="Card image cap">
@@ -27,11 +27,17 @@
 export default {
     data(){
         return {
-            works: []
+            works: [],
+            loading: true
         }
     },
     mounted(){
-        axios.get('http://127.0.0.1:8000/works').then(response => (this.works = response.data));
+        axios
+            .get('http://127.0.0.1:8000/works')
+            .then((res) => {
+                this.works = res.data
+                this.loading = false
+            });
     }
 }
 </script>
