@@ -1,6 +1,6 @@
 @extends('layouts.app')
     @section('content')
-        <add-work-btn></add-work-btn>
-        <works-component></works-component>
+        <modal-button></modal-button>
+        <list-of-works></list-of-works>
         <create-form-work></create-form-work>
     @endsection
