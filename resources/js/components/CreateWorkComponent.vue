@@ -28,6 +28,7 @@
 
 
 <script>
+import EventBus from '../event-bus';
 export default {
     data(){
         return {
@@ -44,6 +45,8 @@ export default {
             .then(function(res){
                 console.log(res)
                 $('#addWork').modal('hide')
+                EventBus.$emit('work-added', res.data.work)
+                console.log(res.data.work)//The response res brings a key work in its data attribute
             })
             .catch(function(err){
                 console.log(err)

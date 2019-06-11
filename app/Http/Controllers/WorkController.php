@@ -28,7 +28,8 @@ class WorkController extends Controller
             $work->save();
 
             return response()->json([
-                "message" => "Work created successfully."
+                "message" => "Work created successfully.",
+                "work" => $work
             ], 200);
         }
     }

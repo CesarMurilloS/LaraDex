@@ -24,12 +24,18 @@
 </template>
 
 <script>
+import EventBus from '../event-bus';
 export default {
     data(){
         return {
             works: [],
             loading: true
         }
+    },
+    created(){
+        EventBus.$on('work-added', data => {
+            this.works.push(data)//data is the work we have added
+        })
     },
     mounted(){
         axios
