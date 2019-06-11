@@ -22,6 +22,8 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('works-component', require('./components/WorksComponent.vue').default);
 Vue.component('spinner', require('./components/Spinner.vue').default);
+Vue.component('create-form-work', require('./components/CreateWorkComponent.vue').default);
+Vue.component('add-work-btn', require('./components/AddWorkComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
