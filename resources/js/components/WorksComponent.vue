@@ -5,7 +5,7 @@
         <div class="col-12 col-sm-6 col-md-4 my-2" v-for="work in works" v-bind:key="work.id">
 
             <div class="card">
-                <img class="card-img-top" src="/images/Image" style="height:100px;width:auto;" alt="Card image cap">
+                <img class="card-img-top" style="height:100px; width:auto;" alt="Card image cap" v-bind:src="work.picture">
 
                 <div class="card-body">
 

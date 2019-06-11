@@ -9,14 +9,14 @@
         </button>
       </div>
       <div class="modal-body">
-      	<form>
+      	<form @submit.prevent="saveWork">
 	        <div class="form-group">
 			    <label>Work</label>
-			    <input type="text" class="form-control" placeholder="Type the work title">
+			    <input type="text" class="form-control" placeholder="Type the work name" v-model="name">
 		  	</div>
 		  	<div class="form-group">
 			    <label>Picture</label>
-			    <input type="text" class="form-control" placeholder="Add the url of an image" >
+			    <input type="text" class="form-control" placeholder="Add the url of an image" v-model="picture">
 		  	</div>
 		  	<button type="submit" class="btn btn-primary">Create</button>
 	  	</form>
@@ -29,7 +29,29 @@
 
 <script>
 export default {
-
+    data(){
+        return {
+            name: null,
+            picture: null
+        }
+    },
+    methods: {
+        saveWork: function(){
+            axios.post('http://127.0.0.1:8000/works', {
+                name: this.name,
+                picture: this.picture
+            })
+            .then(function(res){
+                console.log(res)
+                $('#addWork').modal('hide')
+            })
+            .catch(function(err){
+                console.log(err)
+            });
+            //console.log(this.name)
+            //console.log(this.picture)
+        }
+    }
 }
 </script>
 
