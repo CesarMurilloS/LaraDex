@@ -2,6 +2,7 @@
 
 namespace LaraDex;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,9 +16,15 @@ class User extends Authenticatable
     }
 
     public function authorizeRoles($roles){
-        if($this->hasAnyRole($roles)){
-            return true;
+        if(Auth::guest()){
+            abort(401, 'Please login, access denied to view the students');
+
+        }else{
+            if($this->hasAnyRole($roles)){
+                return true;
+            }
         }
+
         abort(401, 'This action is unauthorized');
     }
 

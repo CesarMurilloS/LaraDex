@@ -4,6 +4,7 @@ namespace LaraDex\Http\Controllers;
 
 use LaraDex\Student;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facaes\Storage;
 use LaraDex\Http\Requests\StoreStudentRequest;
@@ -18,10 +19,17 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['admin', 'user']);
-        $students = Student::all();
+        if(Auth::guest()){
 
-        return view('students.index', compact('students'));
+            abort(401, 'Please login, to view the students');
+
+        }else{
+            $request->user()->authorizeRoles(['admin', 'user']);
+            $students = Student::all();
+
+            return view('students.index', compact('students'));
+        }
+
 
     }
 

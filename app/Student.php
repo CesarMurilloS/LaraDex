@@ -15,4 +15,9 @@ class Student extends Model
     public function getRouteKeyName(){
         return 'slug';
     }
+
+    public function works(){
+        return $this->hasMany('LaraDex\Work');
+    }
+
 }

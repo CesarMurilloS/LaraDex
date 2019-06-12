@@ -1,6 +1,6 @@
 @extends('layouts.app')
     @section('content')
     <div class="container">
-        <h1>This action is unauthorized</h1>
+        <h1>{{ $exception->getMessage() }}</h1>
     </div>
     @endsection
