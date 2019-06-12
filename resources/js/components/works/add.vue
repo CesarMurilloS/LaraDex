@@ -38,7 +38,11 @@ export default {
     },
     methods: {
         saveWork: function(){
-            axios.post('http://127.0.0.1:8000/works', {
+            let currentRoute = window.location.pathname;
+            console.log(currentRoute);
+
+            //We will use axios with strings interpollation so we'll have to change the ticks from ' to `.
+            axios.post(`http://127.0.0.1:8000${currentRoute}/works`, {
                 name: this.name,
                 picture: this.picture
             })
@@ -51,6 +55,19 @@ export default {
             .catch(function(err){
                 console.log(err)
             });
+            /*axios.post('http://127.0.0.1:8000/works', {
+                name: this.name,
+                picture: this.picture
+            })
+            .then(function(res){
+                console.log(res)
+                $('#addWork').modal('hide')
+                EventBus.$emit('work-added', res.data.work)
+                console.log(res.data.work)//The response res brings a key work in its data attribute
+            })
+            .catch(function(err){
+                console.log(err)
+            });*/
             //console.log(this.name)
             //console.log(this.picture)
         }

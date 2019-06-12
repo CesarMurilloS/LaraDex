@@ -1902,7 +1902,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     saveWork: function saveWork() {
-      axios.post('http://127.0.0.1:8000/works', {
+      var currentRoute = window.location.pathname;
+      console.log(currentRoute); //We will use axios with strings interpollation so we'll have to change the ticks from ' to `.
+
+      axios.post("http://127.0.0.1:8000".concat(currentRoute, "/works"), {
         name: this.name,
         picture: this.picture
       }).then(function (res) {
@@ -1912,7 +1915,21 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res.data.work); //The response res brings a key work in its data attribute
       })["catch"](function (err) {
         console.log(err);
-      }); //console.log(this.name)
+      });
+      /*axios.post('http://127.0.0.1:8000/works', {
+          name: this.name,
+          picture: this.picture
+      })
+      .then(function(res){
+          console.log(res)
+          $('#addWork').modal('hide')
+          EventBus.$emit('work-added', res.data.work)
+          console.log(res.data.work)//The response res brings a key work in its data attribute
+      })
+      .catch(function(err){
+          console.log(err)
+      });*/
+      //console.log(this.name)
       //console.log(this.picture)
     }
   }

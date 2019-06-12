@@ -22,6 +22,9 @@
             <button type="submit" class="btn btn-danger">Eliminar</button>
         </form>
 
+        <create-form-work></create-form-work>
+        <modal-button></modal-button>
+
     </div>
 </div>
 @endsection
