@@ -1991,7 +1991,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    axios.get('http://127.0.0.1:8000/works').then(function (res) {
+    var currentRoute = window.location.pathname;
+    console.log(currentRoute);
+    axios.get("http://127.0.0.1:8000".concat(currentRoute, "/works")).then(function (res) {
       _this2.works = res.data;
       _this2.loading = false;
     });

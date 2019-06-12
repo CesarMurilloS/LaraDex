@@ -38,8 +38,10 @@ export default {
         })
     },
     mounted(){
+        let currentRoute = window.location.pathname;
+        console.log(currentRoute);
         axios
-            .get('http://127.0.0.1:8000/works')
+            .get(`http://127.0.0.1:8000${currentRoute}/works`)
             .then((res) => {
                 this.works = res.data
                 this.loading = false

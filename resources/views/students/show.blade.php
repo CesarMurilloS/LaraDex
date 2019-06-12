@@ -24,6 +24,7 @@
 
         <create-form-work></create-form-work>
         <modal-button></modal-button>
+        <list-of-works></list-of-works>
 
     </div>
 </div>
