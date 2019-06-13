@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('mail', 'MailController');
 Route::resource('students', 'StudentController');
+
 //Route::resource('works', 'WorkController');
 Route::get('students/{student}/works', 'WorkController@index');
 Route::post('students/{student}/works', 'WorkController@store');

@@ -78,6 +78,7 @@ class StudentController extends Controller
         $student->description = $request->input('description');
         $student->save();
 
+
         return redirect()->route('students.index');
 
 
